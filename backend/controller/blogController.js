@@ -136,6 +136,17 @@ export const getAllBlog = catchAsyncError(async (req, res, next) => {
     allBlog,
   });
 });
+export const getTrandingBlog = catchAsyncError(async (req, res, next) => {
+  // const options = { sort: { rating: -1 } };
+  const query = { $and: [{ published: true }, { rating: { $gt: 1 } }] };
+  const allBlog = await Blog.find(query).sort({ rating: -1 });
+
+  res.status(200).json({
+    success: true,
+    message: "Blog fetched Successfully!",
+    allBlog,
+  });
+});
 
 export const getSingleBlog = catchAsyncError(async (req, res, next) => {
   const { id } = req.params;

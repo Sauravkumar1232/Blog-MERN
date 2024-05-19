@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Context } from "../../main";
 import { BeatLoader } from "react-spinners";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const TrendingBlogs = () => {
+  const [blogs, setBlogs] = useState([]);
   const responsive = {
     extraLarge: {
       breakpoint: { max: 3000, min: 1324 },
@@ -29,14 +30,25 @@ const TrendingBlogs = () => {
     },
   };
 
-  const { blogs } = useContext(Context);
+  const [myBlogs, setMyBlogs] = useState([]);
 
+  useEffect(() => {
+    const fetchMyBlogs = async () => {
+      const { data } = await axios.get(
+        "http://localhost:3000/api/blog/getTrandingBlog",
+        { withCredentials: true }
+      );
+      setMyBlogs(data.allBlog);
+    };
+    fetchMyBlogs();
+  }, []);
+  console.log("tran", myBlogs);
   return (
     <div className="trending">
       <h3>Trending</h3>
       <Carousel responsive={responsive}>
-        {blogs && blogs.length > 0 ? (
-          blogs.slice(0, 6).map((element) => {
+        {myBlogs && myBlogs.length > 0 ? (
+          myBlogs.slice(0, 6).map((element) => {
             return (
               <Link
                 to={`/blog/${element._id}`}

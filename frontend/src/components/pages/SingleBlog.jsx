@@ -8,7 +8,8 @@ const SingleBlog = () => {
   const { mode, user, isAuthenticated } = useContext(Context);
   const { id } = useParams();
   const [blog, setBlog] = useState({});
-  useEffect(() => {
+  useEffect((e) => {
+    // e.preventDefault()
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
@@ -26,6 +27,7 @@ const SingleBlog = () => {
   if (!isAuthenticated) {
     return <Navigate to={"/"} />;
   }
+  console.log("auth", isAuthenticated);
   return (
     <article
       className={mode === "dark" ? "dark-bg singleBlog" : "light-bg singleBlog"}
