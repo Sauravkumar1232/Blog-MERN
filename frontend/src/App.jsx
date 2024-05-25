@@ -46,7 +46,7 @@ const App = () => {
       const fetchBlogs = async () => {
         try {
           const { data } = await axios.get(
-            "http://localhost:3000/api/blog/getAll",
+            "http://localhost:3000/api/blog/getAll/?category=",
             {
               withCredentials: true,
             }

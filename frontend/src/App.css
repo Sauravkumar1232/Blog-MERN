@@ -56,9 +56,9 @@ h4 {
 .blogs .container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
 }
 .blogs .container .card {
   width: 370px;
@@ -1667,14 +1667,29 @@ footer .container:last-child .links a svg {
 
 
 .star-rating {
-  font-size: 24px;
+  font-size:20px;
 }
 
 .star {
+  margin-top: auto;
+  padding: 8px;
   cursor: pointer;
   color: #ccc;
 }
 
 .star.active {
   color: gold;
+}
+.submit-review{
+  margin-top: 15px;
+  background-color: #04AA6D; /* Green */
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
 }

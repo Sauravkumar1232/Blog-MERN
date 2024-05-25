@@ -19,13 +19,12 @@ router.delete(
   "/delete/:id",
   isAuthenticated,
   isAuthorized("Author"),
-  deleteBlog,
-  getTrandingBlog
+  deleteBlog
 );
 
 router.get("/getAll", getAllBlog);
 router.get("/getTrandingBlog", getTrandingBlog);
-router.get("/getSingle/:id", isAuthenticated, getSingleBlog);
+router.get("/getSingle/:id", getSingleBlog);
 router.get("/getMyBlog", isAuthenticated, isAuthorized("Author"), getMyBlogs);
 router.put("/update/:id", isAuthenticated, isAuthorized("Author"), updateBlog);
 

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import timeStamp from "mongoose-timestamps";
 
 const blogSchema = new mongoose.Schema({
   title: {
@@ -71,6 +72,7 @@ const blogSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  createdAt: Date,
   authorName: {
     type: String,
     required: true,
@@ -87,5 +89,6 @@ const blogSchema = new mongoose.Schema({
     type: Number,
   },
 });
+blogSchema.plugin(timeStamp, { index: true });
 
 export const Blog = mongoose.model("Blog", blogSchema);

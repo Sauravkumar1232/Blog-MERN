@@ -128,7 +128,14 @@ export const deleteBlog = catchAsyncError(async (req, res, next) => {
 });
 
 export const getAllBlog = catchAsyncError(async (req, res, next) => {
-  const allBlog = await Blog.find({ published: true });
+  let category = req.query.category;
+  console.log("cate", category);
+  // const allBlog = await Blog.find({ published: true });
+
+  const allBlog = await Blog.find({
+    published: true,
+    $or: [{ category: { $regex: new RegExp(category.toLowerCase(), "i") } }],
+  }).sort({ createdAt: -1 });
 
   res.status(200).json({
     success: true,
@@ -268,16 +275,20 @@ export const updateBlog = catchAsyncError(async (req, res, next) => {
 });
 
 export const blogRating = catchAsyncError(async (req, res, next) => {
+  if (!req.body.rating) {
+    return next(new ErrorHandler("Select Rating!", 404));
+  }
   const { id } = req.params;
   const blog = await Blog.findById(id);
   if (!blog) {
     return next(new ErrorHandler("Blog not found!", 404));
   }
-  console.log(id);
-  blog.rating = req.body.rating;
+
+  blog.rating += req.body.rating;
   await blog.save();
   res.status(200).json({
     success: true,
     blog,
+    message: "Review Submitted!",
   });
 });

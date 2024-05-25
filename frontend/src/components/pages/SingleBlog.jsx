@@ -9,7 +9,6 @@ const SingleBlog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState({});
   useEffect((e) => {
-    // e.preventDefault()
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
@@ -24,9 +23,9 @@ const SingleBlog = () => {
     };
     getSingleBlog();
   }, []);
-  if (!isAuthenticated) {
-    return <Navigate to={"/"} />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to={"/"} />;
+  // }
   console.log("auth", isAuthenticated);
   return (
     <article
@@ -71,15 +70,8 @@ const SingleBlog = () => {
               <img src={blog.paraThreeImage.url} alt="paraOneImg" />
             )}
           </div>
-          <div>
-            <h1>Rating</h1>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <StarRating />
-          </div>
+
+          <StarRating />
         </section>
       )}
     </article>
