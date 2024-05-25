@@ -22,9 +22,9 @@ const Footer = () => {
         <div className="about">
           <h3>About</h3>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consectetur possimus sed praesentium! Et sunt, distinctio veniam
-            ullam, nesciunt ex laudantium quidem error sint, eum explicabo.
+            At WriteWrap, we're passionate about creating a vibrant online space
+            where ideas flourish, conversations spark, and communities thrive.
+            empower. Thank you for being a part of WriteWrap!
           </p>
           <p>
             <span>Email:</span>zk@gmail.com
@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
       <div className="container">
         <div className="logo">
-          ZETA <span>BLOG</span>
+          <span>WriteWrap</span>
         </div>
         <div className="links">
           <Link to={"/"} target="_blank">

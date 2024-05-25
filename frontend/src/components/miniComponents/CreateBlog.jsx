@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import demo from "../../assets/imageDemo.jpg";
 
 const CreateBlog = () => {
   const [category, setCategory] = useState("");
@@ -156,7 +157,7 @@ const CreateBlog = () => {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <label>BLOG MAIN IMAGE</label>
             <img
-              src={mainImagePreview ? `${mainImagePreview}` : "/imgPL.webp"}
+              src={mainImagePreview ? `${mainImagePreview}` : demo}
               alt="mainImg"
               className="mainImg"
             />
@@ -181,9 +182,7 @@ const CreateBlog = () => {
               onChange={(e) => setParaOneTitle(e.target.value)}
             />
             <img
-              src={
-                paraOneImagePreview ? `${paraOneImagePreview}` : "/imgPL.webp"
-              }
+              src={paraOneImagePreview ? `${paraOneImagePreview}` : demo}
               alt="subParaOneImg"
             />
             <input
@@ -206,9 +205,7 @@ const CreateBlog = () => {
               onChange={(e) => setParaTwoTitle(e.target.value)}
             />
             <img
-              src={
-                paraTwoImagePreview ? `${paraTwoImagePreview}` : "/imgPL.webp"
-              }
+              src={paraTwoImagePreview ? `${paraTwoImagePreview}` : demo}
               alt="subParaTwoImg"
             />
             <input
@@ -231,11 +228,7 @@ const CreateBlog = () => {
               onChange={(e) => setParaThreeTitle(e.target.value)}
             />
             <img
-              src={
-                paraThreeImagePreview
-                  ? `${paraThreeImagePreview}`
-                  : "/imgPL.webp"
-              }
+              src={paraThreeImagePreview ? `${paraThreeImagePreview}` : demo}
               alt="subParaThreeImg"
             />
             <input

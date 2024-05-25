@@ -33,6 +33,7 @@ const StarRating = () => {
 
   return (
     <div className="star-rating">
+      <h3>Rating</h3>
       {[...Array(5)].map((_, index) => {
         const starValue = index + 1;
         return (
@@ -45,10 +46,11 @@ const StarRating = () => {
           </span>
         );
       })}
-      <p>You rated {rating} stars.</p>
+      {/* <p>You rated {rating} stars.</p> */}
+      <br />
       <button
         onClick={() => handleSubmit()}
-        className="submit-btn"
+        className="submit-review"
         type="submit"
       >
         Submit

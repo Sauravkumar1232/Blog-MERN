@@ -8,6 +8,7 @@ import {
   getSingleBlog,
   updateBlog,
   blogRating,
+  getTrandingBlog,
 } from "../controller/blogController.js";
 const router = express.Router();
 
@@ -22,7 +23,8 @@ router.delete(
 );
 
 router.get("/getAll", getAllBlog);
-router.get("/getSingle/:id", isAuthenticated, getSingleBlog);
+router.get("/getTrandingBlog", getTrandingBlog);
+router.get("/getSingle/:id", getSingleBlog);
 router.get("/getMyBlog", isAuthenticated, isAuthorized("Author"), getMyBlogs);
 router.put("/update/:id", isAuthenticated, isAuthorized("Author"), updateBlog);
 

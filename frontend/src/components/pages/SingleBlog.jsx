@@ -8,7 +8,7 @@ const SingleBlog = () => {
   const { mode, user, isAuthenticated } = useContext(Context);
   const { id } = useParams();
   const [blog, setBlog] = useState({});
-  useEffect(() => {
+  useEffect((e) => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
@@ -23,9 +23,10 @@ const SingleBlog = () => {
     };
     getSingleBlog();
   }, []);
-  if (!isAuthenticated) {
-    return <Navigate to={"/"} />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to={"/"} />;
+  // }
+  console.log("auth", isAuthenticated);
   return (
     <article
       className={mode === "dark" ? "dark-bg singleBlog" : "light-bg singleBlog"}
@@ -69,15 +70,8 @@ const SingleBlog = () => {
               <img src={blog.paraThreeImage.url} alt="paraOneImg" />
             )}
           </div>
-          <div>
-            <h1>Rating</h1>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <StarRating />
-          </div>
+
+          <StarRating />
         </section>
       )}
     </article>
