@@ -1064,6 +1064,7 @@ footer .container:last-child .links a svg {
   border-radius: 8px;
   padding: 8px 15px;
   border: none;
+  cursor: pointer;
 }
 .sidebar .mode-btn .dark-icon {
   color: #fff;
