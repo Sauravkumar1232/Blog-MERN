@@ -87,6 +87,7 @@ const blogSchema = new mongoose.Schema({
   },
   rating: {
     type: Number,
+    default: 0,
   },
 });
 blogSchema.plugin(timeStamp, { index: true });

@@ -8,7 +8,7 @@ import { Context } from "../../main";
 const Home = () => {
   const { mode, blogs } = useContext(Context);
   console.log(blogs, "blog");
-  const filteredBlogs = blogs.slice(0, 6).reverse();
+  const filteredBlogs = blogs.slice(0, 6);
   return (
     <>
       <article className={mode === "dark" ? "dark-bg" : "light-bg"}>

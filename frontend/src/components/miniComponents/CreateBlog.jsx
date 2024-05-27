@@ -170,7 +170,7 @@ const CreateBlog = () => {
           <textarea
             rows="25"
             className="intro"
-            placeholder="BLOG INTRO..... (Must contain at least 250 characters!)"
+            placeholder="BLOG INTRO..... (Must contain at least 25 characters!)"
             value={intro}
             onChange={(e) => setIntro(e.target.value)}
           />

@@ -129,13 +129,19 @@ export const deleteBlog = catchAsyncError(async (req, res, next) => {
 
 export const getAllBlog = catchAsyncError(async (req, res, next) => {
   let category = req.query.category;
-  console.log("cate", category);
+  // const { category, sort } = req.query;
+  // const sortOrder = sort === "new-to-old" ? -1 : 1;
+
+  // console.log("cate", category);
+  // console.log("sort", inputSort);
+
   // const allBlog = await Blog.find({ published: true });
 
+  console.log(req.query);
   const allBlog = await Blog.find({
     published: true,
     $or: [{ category: { $regex: new RegExp(category.toLowerCase(), "i") } }],
-  }).sort({ createdAt: -1 });
+  }).sort({ created_at: -1 });
 
   res.status(200).json({
     success: true,
@@ -275,6 +281,7 @@ export const updateBlog = catchAsyncError(async (req, res, next) => {
 });
 
 export const blogRating = catchAsyncError(async (req, res, next) => {
+  console.log(req.body.rating);
   if (!req.body.rating) {
     return next(new ErrorHandler("Select Rating!", 404));
   }

@@ -32,16 +32,25 @@ const Blogs = () => {
     },
   };
 
-  // const { mode } = useContext(Context);
   const [input, setInput] = useState("");
+  const [inputSort, setInputSort] = useState("NewToOld");
+
   // const [blogs, setBlogs] = useState([]);
   const [myBlogs, setMyBlogs] = useState([]);
   const { mode, blogs } = useContext(Context);
   const handleChange = (value) => {
     setInput(value);
+    setInputSort(value);
     fetchBlogs(value);
   };
+  const sorthandleChange = (value) => {
+    setInputSort(value);
+  };
 
+  const reverseBlogs = (value) => {
+    setInputSort(value);
+    setMyBlogs((prevBlogs) => [...prevBlogs].reverse());
+  };
   useEffect(() => {
     const fetchMyBlogs = async (input) => {
       const { data } = await axios.get(
@@ -52,8 +61,9 @@ const Blogs = () => {
     };
     fetchMyBlogs(input);
   }, [input]);
+  console.log("input sort", inputSort);
 
-  console.log(input);
+  console.log("myBlogs", myBlogs);
 
   return (
     <>
@@ -69,11 +79,21 @@ const Blogs = () => {
           <option value="Economy">Economy</option>
           <FaSearch id="search-icon" />
         </select>
+        <select
+          onChange={(e) => reverseBlogs(e.target.value)}
+          value={inputSort}
+        >
+          {/* <option value="">Select </option> */}
+          <option value="NewToOld">New to Old</option>
+          <option value="OldToNew">Old to New</option>
+
+          <FaSearch id="search-icon" />
+        </select>
         <div className="container">
           {myBlogs && myBlogs.length > 0 ? (
             <LatestBlogs blogs={myBlogs} title={"Blogs"} />
           ) : (
-            <BeatLoader color="gray" size={50} style={{ padding: "200px 0" }} />
+            <BeatLoader color="gray" size={45} style={{ padding: "200px 0" }} />
           )}
           {/* <Carousel responsive={responsive}>
             {myBlogs && myBlogs.length > 0 ? (
